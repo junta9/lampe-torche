@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* *****************************Partie animation accueil******************** */
+
+body {
+  font-family: "Bebas Neue", cursive;
+  width: 100%;
+  height: 100vh;
+}
+h1 {
+  -webkit-text-stroke: 1px black;
+  font-size: 10em;
+  text-align: center;
+  text-transform: uppercase;
+  stroke-dasharray: 500px;
+  /* stroke-dashoffset: 50px; */
+}
+.icone {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 600px) {
+  .icone {
+    width: 90%;
+  }
+  #objectif {
+    font-size: 20px!important;
+    width: 100%;
+    text-align: center;
+  }
+  #finger {
+    display: none!important;
+  }
+  .lampe {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: lampe-2 2s ease-out forwards!important;
+  }
+  @keyframes lampe-2 {
+    to {
+      opacity: 1;
+      left: 50%;
+    }
+  }
+}
+#objectif {
+  display: none;
+  position: absolute;
+  font-size: 1.5em;
+  width: 100%;
+  text-align: center;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 1500px) and (min-width: 1025px) {
+  #objectif {
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+  }
+  #finger {
+    left: 81.5%!important;
+    animation: finger 1s ease-in-out infinite;
+  }
+}
+/* @keyframes objectif {
+    to {
+        display: block;
+        width: 100%;
+    }
+} */
+
+#objectif::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  animation: slide 12s ease-in-out forwards;
+}
+@keyframes slide {
+  to {
+    left: 100%;
+    width: 0%;
+  }
+}
+
+/* svg {
+  display: none; * à remettre ou enlever pour mettre l'animation*
+} */
+
+/* ****************************************Partie bouton lampe******************** */
+
+body {
+  /* background-image: url(./living-room.jpg); */
+  background-color: black;
+}
+.display-none {
+  display: none;
+  transition: opacity 1s ease-in-out;
+}
+.display-block {
+  display: block;
+  transition: opacity 1s ease-in-out;
+}
+.livingroom {
+  display: flex;
+  background-image: url(./living-room.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: none;
+  position: relative;
+  z-index: -1;
+}
+
+.lampe {
+  display: none;
+  opacity: 0;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  background-color: black;
+  color: yellow;
+  border-radius: 50%;
+  border: 1px solid yellow;
+  position: absolute;
+  top: 70%;
+  left: 90%;
+  cursor: pointer;
+  animation: lampe 2s ease-in-out forwards;
+}
+@keyframes lampe {
+  to {
+    opacity: 1;
+    left: 80%;
+  }
+}
+
+#finger {
+  display: none;
+  opacity: 0.8;
+  position: absolute;
+  top: 60%;
+  left: 81.3%;
+  color: yellow;
+  transform: rotate(180deg);
+  animation: finger 1s ease-in-out infinite;
+}
+@keyframes finger {
+  50% {
+    opacity: 1;
+    top: 64%;
+  }
+}
+
+@media (max-width: 1024px) {
+  #finger {
+    left: 82.5%!important;
+  }
+  #objectif {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.interrupteur {
+  display: none;
+  position: absolute;
+  z-index: -1;
+  top: 45%;
+  left: 49%;
+  cursor: pointer;
+  padding: 5px;
+  /* color: rgb(236, 218, 25); */
+  background-color: transparent;
+  border: none;
+}
+
+.icone path:nth-child(1) {
+  /* ******************Creation du dasharray*************** */
+  stroke-dasharray: 500px;
+  stroke-dashoffset: 500px;
+  animation: anim 6s ease-in-out forwards;
+}
+
+@keyframes anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* *********************************Partie lampe torche**************************************************** */
+
+/* :root {
+  --cursorX: 50vw;
+  --cursorY: 50vh;  
+}
+
+:root::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  position: fixed;
+  background: radial-gradient(
+    circle 6em at var(--cursorX) var(--cursorY),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+} */
+.light {
+  --cursorX: 50vw;
+  --cursorY: 50vh;
+  opacity: 1;
+  animation: fade-in 1s ease-in-out forwards;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.light::before {
+  content: "";
+  display: block;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  position: fixed;
+  background: radial-gradient(
+    circle 6em at var(--cursorX) var(--cursorY),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1)
+  );
+}
+
+p {
+  font-size: 1em;
+  text-align: justify;
+  line-height: 1.8em;
+  padding: 0 2em;
+  margin-bottom: 1em;
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    font-size: 24px;
+  }
+}
